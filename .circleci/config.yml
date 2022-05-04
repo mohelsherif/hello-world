@@ -10,13 +10,21 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo world
-    environment:
-      First_Env_Var: xxxxmed
+  myfirstenv:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout:
+      - run:
+        name: "echo an env var that is part of our project"
+        command: |
+          echo First_Env_Var
 workflows:
   welcome:
     jobs:
       - say-hello
       - print-world
+      - myfirstenv
      
 
         
